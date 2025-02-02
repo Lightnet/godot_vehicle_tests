@@ -8,6 +8,26 @@
 
 # Information:
 	Simple vehicle test and notes.
+	
+# Vehicle:
+If vehicle is fast and turn, it will flip over.
+
+Marker3d is ref position.
+
+```
+VehicleBody3D
+-Mass:60
+-Mass Distribution
+--x:0
+--y:-0.5	= lower to avoid roll over
+--z:0
+
+VehicleWheel3d
+-Wheel
+--Roll Influence 1.0
+-Suspension
+--Stiffness 40 = clip floor/ground prevent
+```
 
 # refs Links:
  * https://www.youtube.com/watch?v=Wj1FfilAe2Y

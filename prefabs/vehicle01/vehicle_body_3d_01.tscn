@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bkkioyhfod12k"]
 
-[ext_resource type="Script" uid="uid://bwqr372bppkoy" path="res://scripts/vehicle_body_3d.gd" id="1_mgoff"]
+[ext_resource type="Script" uid="uid://bwqr372bppkoy" path="res://scripts/vehicle_body_3d_01.gd" id="1_mgoff"]
 [ext_resource type="Script" uid="uid://baidkja325hlq" path="res://prefabs/vehicle01/control_mps.gd" id="2_ukm51"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukm51"]
@@ -20,8 +20,9 @@ size = Vector3(1.5, 1, 2)
 size = Vector3(1.5, 1, 2)
 
 [node name="VehicleBody3D" type="VehicleBody3D"]
+mass = 60.0
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, -1, 0)
+center_of_mass = Vector3(0, -0.5, 0)
 script = ExtResource("1_mgoff")
 ENGINE_POWER = 200
 
@@ -106,6 +107,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.221076, 0, 0)
 mesh = SubResource("BoxMesh_ukm51")
 
 [node name="Marker3D" type="Marker3D" parent="."]
+editor_description = "Center of car test
+"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 gizmo_extents = 2.05
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
