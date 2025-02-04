@@ -9,7 +9,7 @@ extends Control
 #func _ready() -> void:
 	#pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# https://forum.godotengine.org/t/godot-4-equivelent-to-basis-xform-inv/9847/2
 	# 3.x?
 	#var fwd_mps = vehicle_body.transform.basis.xform_inv().z

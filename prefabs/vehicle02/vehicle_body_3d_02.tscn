@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkkioyhfod12k"]
+[gd_scene load_steps=8 format=3 uid="uid://qn6vn3ilaidv"]
 
-[ext_resource type="Script" uid="uid://bwqr372bppkoy" path="res://scripts/vehicle_body_3d_01.gd" id="1_mgoff"]
-[ext_resource type="Script" uid="uid://baidkja325hlq" path="res://scripts/control_mps.gd" id="2_ukm51"]
+[ext_resource type="Script" uid="uid://b0fvw6ctx3rmj" path="res://scripts/vehicle_body_3d_02.gd" id="1_s44em"]
+[ext_resource type="Script" uid="uid://baidkja325hlq" path="res://scripts/control_mps.gd" id="2_7xhcd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukm51"]
 albedo_color = Color(0, 0, 0, 1)
@@ -23,7 +23,8 @@ size = Vector3(1.5, 1, 2)
 mass = 60.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.5, 0)
-script = ExtResource("1_mgoff")
+script = ExtResource("1_s44em")
+ENGINE_POWER = 200
 
 [node name="Wheel_FL" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06714, -0.445618, 0.959268)
@@ -118,9 +119,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ig7tw")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, -1.28042e-08, 0.989216, 0.146463, 8.648e-08, 0.146463, -0.989216, 0, 1.84497, -4.15044)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -130,7 +128,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_ukm51")
+script = ExtResource("2_7xhcd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -182,3 +180,10 @@ text = "MPS (meter per second):"
 [node name="L_MPS_Feed" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "0"
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.08421, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 1.28042e-08, 9.42734e-10, -1.28042e-08, 0.989216, 0.146463, 9.42777e-10, -0.146463, 0.989216, 0, 0, 0)
