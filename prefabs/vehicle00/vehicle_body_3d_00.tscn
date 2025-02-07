@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkkioyhfod12k"]
+[gd_scene load_steps=8 format=3 uid="uid://c4va8ipqdshy5"]
 
-[ext_resource type="Script" uid="uid://bwqr372bppkoy" path="res://scripts/vehicle_body_3d_01.gd" id="1_mgoff"]
-[ext_resource type="Script" uid="uid://baidkja325hlq" path="res://scripts/control_mps.gd" id="2_ukm51"]
+[ext_resource type="Script" uid="uid://bwqr372bppkoy" path="res://scripts/vehicle_body_3d_01.gd" id="1_nqtll"]
+[ext_resource type="Script" uid="uid://baidkja325hlq" path="res://scripts/control_mps.gd" id="2_7obws"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukm51"]
 albedo_color = Color(0, 0, 0, 1)
@@ -19,11 +19,11 @@ size = Vector3(1.5, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
 size = Vector3(1.5, 1, 2)
 
-[node name="VehicleBase01" type="VehicleBody3D"]
+[node name="VehicleBase00" type="VehicleBody3D"]
 mass = 60.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.5, 0)
-script = ExtResource("1_mgoff")
+script = ExtResource("1_nqtll")
 
 [node name="Wheel_FL" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06714, -0.445618, 0.959268)
@@ -130,7 +130,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_ukm51")
+script = ExtResource("2_7obws")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 0

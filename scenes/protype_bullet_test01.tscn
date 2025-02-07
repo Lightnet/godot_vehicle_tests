@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dgjbi433taerr"]
+
+[node name="Main" type="Node"]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

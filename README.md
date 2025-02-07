@@ -39,3 +39,6 @@ VehicleWheel3d
  * https://github.com/godotengine/godot/issues/39433
  * https://godotforums.org/d/20499-truck-town-how-to-calculate-speed/3
  * https://github.com/godotengine/godot-demo-projects/blob/4.2-31d1c0c/3d/truck_town/spedometer.gd
+
+# Vehicles:
+ * https://www.youtube.com/watch?v=KXhwSLqEYAI

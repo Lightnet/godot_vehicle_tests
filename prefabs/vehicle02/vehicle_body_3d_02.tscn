@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://qn6vn3ilaidv"]
+[gd_scene load_steps=9 format=3 uid="uid://qn6vn3ilaidv"]
 
 [ext_resource type="Script" uid="uid://b0fvw6ctx3rmj" path="res://scripts/vehicle_body_3d_02.gd" id="1_s44em"]
 [ext_resource type="Script" uid="uid://baidkja325hlq" path="res://scripts/control_mps.gd" id="2_7xhcd"]
+[ext_resource type="Script" uid="uid://d3squxy03q5kt" path="res://scripts/camera3d01.gd" id="3_7xhcd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukm51"]
 albedo_color = Color(0, 0, 0, 1)
@@ -19,7 +20,7 @@ size = Vector3(1.5, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
 size = Vector3(1.5, 1, 2)
 
-[node name="VehicleBody3D" type="VehicleBody3D"]
+[node name="VehicleBase02" type="VehicleBody3D"]
 mass = 60.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.5, 0)
@@ -182,8 +183,9 @@ layout_mode = 2
 text = "0"
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.08421, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.52184, 0)
 spring_length = 3.0
+script = ExtResource("3_7xhcd")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 1.28042e-08, 9.42734e-10, -1.28042e-08, 0.989216, 0.146463, 9.42777e-10, -0.146463, 0.989216, 0, 0, 0)

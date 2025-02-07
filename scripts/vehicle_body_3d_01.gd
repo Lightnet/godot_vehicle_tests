@@ -10,7 +10,7 @@ extends VehicleBody3D
 @export var ENGINE_POWER = 300
 
 func _ready() -> void:
-	print("Hello?wwwwwasdasdwasdwd")
+	#print("vehicle?")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pass
 	
