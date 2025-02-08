@@ -1,8 +1,89 @@
-[gd_scene format=3 uid="uid://dgjbi433taerr"]
+[gd_scene load_steps=14 format=3 uid="uid://dgjbi433taerr"]
+
+[ext_resource type="Texture2D" uid="uid://cu6bnaetwb3gn" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_klcit"]
+[ext_resource type="Script" uid="uid://cx1yoqll1c7fl" path="res://prefabs/turret00/turret_00.gd" id="2_m5jv5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m5jv5"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_a54ea"]
+sky_material = SubResource("ProceduralSkyMaterial_m5jv5")
+
+[sub_resource type="Environment" id="Environment_b1kcj"]
+background_mode = 2
+sky = SubResource("Sky_a54ea")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5jv5"]
+albedo_texture = ExtResource("1_klcit")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_klcit"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klcit"]
+albedo_color = Color(0.11208, 0, 0.000242024, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m5jv5"]
+material = SubResource("StandardMaterial3D_klcit")
+size = Vector3(0.5, 0.5, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a54ea"]
+albedo_color = Color(1, 0.101961, 0.0823529, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b1kcj"]
+material = SubResource("StandardMaterial3D_a54ea")
+size = Vector3(0.5, 0.5, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1kcj"]
+albedo_color = Color(0.036183, 0.534585, 0.0294051, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ocf4e"]
+material = SubResource("StandardMaterial3D_b1kcj")
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Main" type="Node"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b1kcj")
+
 [node name="Node3D" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Node3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_m5jv5")
+
+[node name="Turret00" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_m5jv5")
+
+[node name="Marker3D" type="Marker3D" parent="Node3D/Turret00"]
+
+[node name="Turret_Base" type="MeshInstance3D" parent="Node3D/Turret00"]
+mesh = SubResource("BoxMesh_klcit")
+
+[node name="Turret_Ptich" type="MeshInstance3D" parent="Node3D/Turret00/Turret_Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_m5jv5")
+skeleton = NodePath("../..")
+
+[node name="Turret_Point" type="MeshInstance3D" parent="Node3D/Turret00/Turret_Base/Turret_Ptich"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.548993)
+mesh = SubResource("BoxMesh_b1kcj")
+skeleton = NodePath("../../..")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.734394, 0.678724, 0, -0.678724, 0.734394, 0, 5.63628, 4.91587)
+
+[node name="MeshPoint" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_ocf4e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

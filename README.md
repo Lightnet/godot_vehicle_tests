@@ -29,6 +29,20 @@ VehicleWheel3d
 --Stiffness 40 = clip floor/ground prevent
 ```
 
+# Vehicle tests:
+
+## Vehicle 00:
+  Default. Without config but script test. This deal with the wheel clipping floor or ground. Just a camera added.
+
+## Vehicle 01:
+  Vehicle script. Wheel config and not clipping the floor. Just a camera added.
+
+## Vehicle 02:
+  Vehicle script. Wheel config and not clipping the floor. Camera oribt script.
+
+## Vehicle Tank 01:
+  Wheel config and not clipping the floor. Camera oribt script. Vehicle script. Will not use the steering since using the track test later.
+
 # refs Links:
  * https://www.youtube.com/watch?v=Wj1FfilAe2Y
  * https://www.youtube.com/watch?v=5m7nBj98rx4&t=652s
