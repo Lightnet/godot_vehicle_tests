@@ -1,0 +1,1 @@
+https://www.youtube.com/watch?v=IDsoEAj5xG0 Godot FPS Tutorial - Projectile Weapons

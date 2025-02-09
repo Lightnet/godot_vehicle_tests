@@ -2,6 +2,8 @@ extends Node3D
 # https://www.youtube.com/watch?v=mmvIkkKJVlQ
 # 
 
+const BULLET = preload("res://prefabs/projectiles/bullet01/bullet.tscn")
+
 @export var accuracy:float = 0
 @export var damage:float = 1
 
@@ -17,8 +19,18 @@ var target_position:Vector3 = Vector3.ZERO
 #func _ready() -> void:
 	#pass
 
-#func _input(event: InputEvent) -> void:
-	#pass
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("fire"):
+		print("FIRE BULLET")
+		var temp_bullet = BULLET.instantiate()
+		#owner.add_sibling(temp_bullet)
+		add_sibling(temp_bullet)
+		temp_bullet.global_position = turret_point.global_position
+		temp_bullet.global_rotation = turret_point.global_rotation
+		temp_bullet.is_shoot = true
+		#owner.add_child(temp_bullet)
+		
+	pass
 
 func _physics_process(_delta: float) -> void:
 	#var win = get_viewport().position
@@ -35,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 	#camera point
 	var rayOrigin = cam.project_ray_origin(mouse_position)
 	#print("mouse_position:", mouse_position)
-	#camer dir
+	#camera dir
 	#var rayEnd = rayOrigin + camera.project_local_ray_normal(mouse_position) * 2000 #end point #offset a lot
 	var rayEnd = rayOrigin + camera.project_ray_normal(mouse_position) * 2000 #end point
 	#print("rayEnd: ", rayEnd)
