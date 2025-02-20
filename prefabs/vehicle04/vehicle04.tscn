@@ -1,0 +1,200 @@
+[gd_scene load_steps=10 format=3 uid="uid://cknuhs51b61ko"]
+
+[ext_resource type="Script" uid="uid://b0fvw6ctx3rmj" path="res://scripts/vehicle_body_3d_02.gd" id="1_lfv0b"]
+[ext_resource type="Script" uid="uid://baidkja325hlq" path="res://scripts/control_mps.gd" id="2_bnkn3"]
+[ext_resource type="Script" uid="uid://d0bmvs0boj48y" path="res://prefabs/vehicle04/chase02.gd" id="3_lfv0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukm51"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0xm2m"]
+material = SubResource("StandardMaterial3D_ukm51")
+height = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_ukm51"]
+size = Vector3(0.1, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+size = Vector3(1.5, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
+size = Vector3(1.5, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ge7dd"]
+
+[node name="VehicleBase04" type="VehicleBody3D"]
+mass = 60.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.5, 0)
+script = ExtResource("1_lfv0b")
+ENGINE_POWER = 200
+
+[node name="Wheel_FL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06714, -0.445618, 0.959268)
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_rest_length = 0.2
+suspension_stiffness = 40.0
+
+[node name="Marker3D" type="Marker3D" parent="Wheel_FL"]
+visibility_parent = NodePath("../MeshInstance3D")
+gizmo_extents = 0.65
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_FL"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00700003, 0, 0)
+mesh = SubResource("CylinderMesh_0xm2m")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wheel_FL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253699, 0, 0)
+mesh = SubResource("BoxMesh_ukm51")
+
+[node name="Wheel_FR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.067, -0.4456, 0.959)
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_rest_length = 0.2
+suspension_stiffness = 30.0
+
+[node name="Marker3D" type="Marker3D" parent="Wheel_FR"]
+visibility_parent = NodePath("../MeshInstance3D")
+gizmo_extents = 0.65
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_FR"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00700009, 0, 0)
+mesh = SubResource("CylinderMesh_0xm2m")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wheel_FR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.221076, 0, 0)
+mesh = SubResource("BoxMesh_ukm51")
+
+[node name="Wheel_RL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.067, -0.4456, -1.041)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_rest_length = 0.2
+suspension_stiffness = 30.0
+
+[node name="Marker3D" type="Marker3D" parent="Wheel_RL"]
+visibility_parent = NodePath("../MeshInstance3D")
+gizmo_extents = 0.65
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_RL"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_0xm2m")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wheel_RL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253699, 0, 0)
+mesh = SubResource("BoxMesh_ukm51")
+
+[node name="Wheel_RR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.067, -0.4456, -0.903)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_rest_length = 0.2
+suspension_stiffness = 30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_RR"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_0xm2m")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="Marker3D" type="Marker3D" parent="Wheel_RR"]
+visibility_parent = NodePath("../MeshInstance3D")
+gizmo_extents = 0.65
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wheel_RR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.221076, 0, 0)
+mesh = SubResource("BoxMesh_ukm51")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+editor_description = "Center of car test
+"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+gizmo_extents = 2.05
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ig7tw")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ig7tw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_bnkn3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 152.0
+offset_bottom = 115.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="L_Brake01" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Brake"
+
+[node name="L_Brake_feed" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="L_Engine_Force" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Engine Force:"
+
+[node name="L_Engine_Force_feed" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="L_Steering" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Steering:"
+
+[node name="L_Steering_feed" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="L_MPS01" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "MPS (meter per second):"
+
+[node name="L_MPS_Feed" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "0"
+
+[node name="camera_pivot" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18397, 0)
+top_level = true
+script = ExtResource("3_lfv0b")
+offset = Vector3(0, 1.184, 0)
+target = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="camera_pivot"]
+transform = Transform3D(-1, 1.2771e-08, -8.64849e-08, 0, 0.989272, 0.146083, 8.74228e-08, 0.146083, -0.989272, 0, 0, -1.73385)
+current = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39646)
+mesh = SubResource("BoxMesh_ge7dd")

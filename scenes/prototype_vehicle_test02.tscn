@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgffxoeecjxtc"]
+
+[ext_resource type="PackedScene" uid="uid://cr8s0rvrrm70y" path="res://scenes/protoype_base_map_test01.tscn" id="1_gs16r"]
+[ext_resource type="PackedScene" uid="uid://cknuhs51b61ko" path="res://prefabs/vehicle04/vehicle04.tscn" id="2_gs16r"]
+
+[node name="Main" type="Node"]
+editor_description = "Vehicle test here."
+
+[node name="Level" parent="." instance=ExtResource("1_gs16r")]
+
+[node name="VehicleBase04" parent="." instance=ExtResource("2_gs16r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.720988, 1.44562, -1.25826)

@@ -56,3 +56,25 @@ VehicleWheel3d
 
 # Vehicles:
  * https://www.youtube.com/watch?v=KXhwSLqEYAI
+ * https://www.youtube.com/watch?v=zXLpitpFC6E
+
+```
+get-rpm
+```
+ * https://medium.com/@Satyam_Mishra/a-simple-guide-to-script-your-first-movable-car-in-godot-engine-93177db71472
+ * https://www.youtube.com/watch?v=5m7nBj98rx4 Race Car Controller Tutorial - Godot 3D
+ * https://electronstudio.github.io/godot_racing/tutorial.html
+ * https://kidscancode.org/godot_recipes/4.x/3d/3d_sphere_car/index.html
+ * 
+
+ * https://kidscancode.org/godot_recipes/4.x/3d/3d_sphere_car/index.html
+
+
+ * https://www.youtube.com/watch?v=t_zN-7Xggw4
+ * https://www.youtube.com/watch?v=8oywBn_bLeU
+ * 
+ * 
+ * https://www.youtube.com/watch?v=2RmJow2YAuc How To Make A Tank - Godot 3D Tutorial
+ * 
+ * 
+ * https://www.youtube.com/watch?v=Gfpnxg-jne4 Path Based Mesh Generation in Godot 4

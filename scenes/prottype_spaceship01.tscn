@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctkpf634ce8y0"]
+
+[ext_resource type="Texture2D" uid="uid://cu6bnaetwb3gn" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_frui4"]
+[ext_resource type="Script" uid="uid://bvd875lggkkv" path="res://scripts/spaceship01.gd" id="2_4qguu"]
+[ext_resource type="Texture2D" uid="uid://b3ob016mea6xa" path="res://addons/kenney_prototype_textures/green/texture_01.png" id="2_l3rqm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l3rqm"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_4qguu"]
+sky_material = SubResource("ProceduralSkyMaterial_l3rqm")
+
+[sub_resource type="Environment" id="Environment_rceup"]
+background_mode = 2
+sky = SubResource("Sky_4qguu")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrtc6"]
+albedo_texture = ExtResource("1_frui4")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eedfn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qguu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rceup"]
+albedo_texture = ExtResource("2_l3rqm")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rceup")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+material = SubResource("StandardMaterial3D_nrtc6")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.30506)
+material = SubResource("StandardMaterial3D_nrtc6")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.152, 0, -7.30506)
+material = SubResource("StandardMaterial3D_nrtc6")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.152, 0, 6.57932)
+material = SubResource("StandardMaterial3D_nrtc6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="spaceship" type="CharacterBody3D" parent="."]
+script = ExtResource("2_4qguu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spaceship"]
+shape = SubResource("BoxShape3D_eedfn")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="spaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02786, 0)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="spaceship/SpringArm3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spaceship"]
+mesh = SubResource("BoxMesh_4qguu")
+surface_material_override/0 = SubResource("StandardMaterial3D_rceup")
