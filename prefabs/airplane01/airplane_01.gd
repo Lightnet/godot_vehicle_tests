@@ -1,4 +1,5 @@
 extends VehicleBody3D
+# https://www.youtube.com/watch?v=7URoi0fSpnc
 
 @onready var fr_wheel: VehicleWheel3D = $FR_Wheel
 @onready var fl_wheel: VehicleWheel3D = $FL_Wheel
@@ -27,12 +28,16 @@ func _physics_process(delta):
 	brake = brake_input*brake_power
 
 func _integrate_forces(_state):
-	var speed = transform.basis * linear_velocity
+	#var speed = transform.basis * linear_velocity
+	var vec = transform.basis.z * linear_velocity
+	var rez_vec = vec.x + vec.y + vec.z
+	
+	
 	if grounded == true && Input.is_action_pressed("shift"):
 		#if transform.basis.xform_inv(linear_velocity).z <= -8:
-		if speed.z <= -8:
+		if rez_vec <= -8:
 			grounded = false
-		if !fr_wheel.is_in_contact() && !fl_wheel.is_in_contact():
+		if not fr_wheel.is_in_contact() && not fl_wheel.is_in_contact():
 			grounded = false
 	else:
 		if fr_wheel.is_in_contact() && fl_wheel.is_in_contact():
@@ -40,7 +45,7 @@ func _integrate_forces(_state):
 	
 	if grounded == false:
 		
-		if speed.z <= -6:
+		if rez_vec <= -6:
 			linear_velocity = lerp(linear_velocity,-transform.basis.z*(horse_power/20),(accel_speed/20))
 			
 		var ver_input = -Input.get_action_strength("forward")+Input.get_action_strength("backward")
